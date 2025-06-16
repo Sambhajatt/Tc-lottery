@@ -1,0 +1,571 @@
+
+<html lang="en" translate="no" style="font-size: 37.5px;">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="screen-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-page-mode" content="app">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+<meta name="apple-mobile-web-app-title" content="Welcome">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta content="email=no" name="format-detection">
+<title>tc</title>
+<link rel="icon" href="https://res.inbofa999.com/india/upload/1099/bef9ea3c4972f411126f61ee8ba89c1f.png">
+<link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/main.css?v=20250407002">
+
+<style>
+    .mobileSelect .content .btnBar .ensure {
+        width: auto;
+    }
+    .chatroom-overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        touch-action: none;
+        max-width: 500px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+</style>
+
+<script src="/static/js2/lang.js?v=20250407002"></script>
+<script> setLanguage('en_us')</script>
+<script>
+    var imgCdn = "https://in.piccdn123.com";
+    var fontTemplate = "_template_/orange";
+    var copy_succ = "Copy successful";
+    var please_stay_tuned = "Please stay tuned";
+    var sever_error_500 = "Internal Server Error: 500, please contact customer service for assistance";
+    var request_timed_out = "Request timed out, please check your network";
+    var request_failed = "Request failed";
+    if (window.location.hash.startsWith('#/register')) {
+        const queryString = window.location.hash.split('?')[1];
+        if (queryString) {
+            const params = new URLSearchParams(queryString);
+            const invitationCode = params.get('invitationCode');
+            if (invitationCode) {
+                window.location.href = `/register?invite_code=${invitationCode}`;
+            } else {
+                window.location.href = '/register';
+            }
+        } else {
+            window.location.href = '/register';
+        }
+    }
+
+</script>
+  <link rel="stylesheet" href="https://in.piccdn123.com/static/_template_/orange/css/my.css">
+</head>
+<body>
+
+<div id="app">
+
+
+  <div class="userInfo__container">
+
+
+    <div class="userInfo__container-content">
+      <div class="userInfo__container-content-wrapper">
+        <a class="userInfo__container-content__avatar" href="/user/updateAvatar">
+                    <img src="/static/common/avatar/17.png" class="ar-lazyload">
+                  </a>
+        <div class="userInfo__container-content__name">
+          <div class="userInfo__container-content-nickname">
+            <h3>MEMBER-12392812</h3>
+<!--            <div class="n0"></div>-->
+            <img class="editPencil" src="" style="display: none;">
+          </div>
+          <div class="userInfo__container-content-uid">
+            <span>UID</span>
+            <span>|</span>
+            <span>12392812</span>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/copy.png" class="my-copy" data-clipboard-text="12392812">
+          </div>
+          <div class="userInfo__container-content-logintime">
+            <span>Last login:&nbsp;</span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="userinfo-content">
+    <div class="totalSavings__container">
+      <div class="totalSavings__container-header">
+        <div class="totalSavings__container-header-box ar-1px-b">
+            <div class="totalSavings__container-header__title">
+                <span>Total Balance</span>
+            </div>
+            <p class="totalSavings__container-header__subtitle">
+              ₹<span id="balance_span" style="margin-left: .2rem">8291.00 </span>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/balanceen2.svg" id="refresh_balance">
+          </p>
+        </div>
+      </div>
+      <div class="totalSavings__container-content">
+        <div class="totalSavings__container-content-item">
+          <a href="/wallet">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/wallet.png">
+            <span> Wallet</span>
+          </a>
+        </div>
+        <div class="totalSavings__container-content-item">
+          <a href="/payment">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/deposit.png">
+            <span>Deposit</span>
+          </a>
+        </div>
+        <div class="totalSavings__container-content-item">
+          <a href="/withdraw">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/withdraw.png">
+            <span>Withdraw</span>
+          </a>
+        </div>
+                <div class="totalSavings__container-content-item">
+          <a href="/vip">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/svip.png">
+            <span>
+              SVIP
+            </span>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    <div class="financialServices__container">
+      <div class="financialServices__container-footer" style="display: none">
+        <div>
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/vault.png">
+          <div>
+            <div><span>Safe Box</span>
+              <div class="financialServices__container-footer-des">
+                <h4>
+                  ₹0.00
+                </h4>
+                <i class="van-badge__wrapper van-icon van-icon-arrow">
+                </i>
+              </div>
+            </div>
+            <span>Daily interest rate 10%  + VIP extra income safe, calculated every 1 minute</span>
+          </div>
+        </div>
+
+      </div>
+            <a href="/safe"><img src="https://in.piccdn123.com/static/_template_/orange/img/my/safe_banner.png" style="width:100%"></a>
+      
+      <div class="financialServices__container-box">
+
+        <a href="/user/betDetail/settledToday">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/bet.png">
+          <div class="financialServices__container-box-para">
+            <h3> Bet</h3>
+            <span>My betting history</span>
+          </div>
+        </a>
+
+        <a href="/user/balanceDetail">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/transaction.png">
+          <div class="financialServices__container-box-para">
+            <h3>Transaction</h3>
+            <span>My transaction history</span>
+          </div>
+        </a>
+
+        <a href="/payment/record">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/rechargeHistory.png">
+          <div class="financialServices__container-box-para">
+            <h3>Deposit</h3>
+            <span>My deposit history</span>
+          </div>
+        </a>
+
+        <a href="/withdraw/record">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/walletHistory.png">
+          <div class="financialServices__container-box-para">
+            <h3>Withdraw</h3>
+            <span>My withdraw history</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    <div class="settingPanel__container">
+      <div class="settingPanel__container-items">
+
+        <a class="settingPanel__container-items__item ar-1px-b" href="/userMessage?returnUrl=/me">
+          <div class="settingPanel__container-items__title">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/notification.png">
+            <span>Notification</span>
+          </div>
+          <div class="settingPanel__container-items-right">
+                        <h5>1</h5>
+                        <i class="van-badge__wrapper van-icon van-icon-arrow" style="color: rgb(51, 51, 51);"></i>
+          </div>
+        </a>
+
+        <a class="settingPanel__container-items__item ar-1px-b" href="/activity/redeemGift">
+          <div class="settingPanel__container-items__title">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/gifts.png">
+            <span>Gifts</span>
+          </div>
+          <div class="settingPanel__container-items-right">
+            <i class="van-badge__wrapper van-icon van-icon-arrow" style="color: rgb(51, 51, 51);"></i>
+          </div>
+        </a>
+
+        <a class="settingPanel__container-items__item ar-1px-b" href="/user/gameStatistics">
+          <div class="settingPanel__container-items__title">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/gamestatistics.png">
+            <span>Game Statistics</span>
+          </div>
+          <div class="settingPanel__container-items-right">
+            <i class="van-badge__wrapper van-icon van-icon-arrow"
+               style="color: rgb(51, 51, 51);"></i>
+          </div>
+        </a>
+
+        <div class="settingPanel__container-items__item ar-1px-b" id="switch_language">
+          <div class="settingPanel__container-items__title">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/languageIcon.png">
+            <span>Language</span>
+          </div>
+          <div class="settingPanel__container-items-right">
+            <input type="hidden" id="ck_language" value="ck_1099_language">
+            <input type="hidden" id="current_language" value="en_us">
+            <span>English</span>
+            <i class="van-badge__wrapper van-icon van-icon-arrow" style="color: rgb(51, 51, 51);"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="serviceCenter-wrap">
+      <div class="serviceCenter__container">
+        <h1>Service center</h1>
+        <div class="serviceCenter__container-items">
+          <a class="serviceCenter__container-items__item" href="/user/setting">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_settingCenter.png">
+            <span>Settings</span>
+          </a>
+          <a class="serviceCenter__container-items__item" href="/feedback/index">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_feedback.png">
+            <span>Feedback</span>
+          </a>
+          <a class="serviceCenter__container-items__item" href="/announcement">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_notification.png">
+            <span>Announcement</span>
+          </a>
+          <a class="serviceCenter__container-items__item" href="/customerService">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_Center.png">
+            <span>Customer Service</span>
+          </a>
+          <a class="serviceCenter__container-items__item">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_guide.png">
+            <span>Beginner's Guide</span>
+          </a>
+          <a class="serviceCenter__container-items__item" href="/user/about">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/my/service_about.png">
+            <span>About Us</span>
+          </a>
+        </div>
+      </div>
+
+
+
+      <div class="serviceCenter-wrap-header">
+        <button>
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/my/power.png">
+          Log out        </button>
+      </div>
+
+
+      <div class="dialog">
+        <div class="dialog__container" role="dialog" tabindex="0">
+          <div class="dialog__container-img">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/tip.png">
+          </div>
+          <div class="dialog__container-title">
+            <h1>
+              Confirm log out?            </h1>
+          </div>
+          <div class="dialog__container-content">
+          </div>
+          <div class="dialog__container-footer">
+            <button>
+              Cancel            </button>
+            <button id="logout">
+              Confirm            </button>
+          </div>
+
+        </div>
+        <div class="dialog__outside">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- nav bottom start -->
+    <div class="nav c-pr">
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed">
+      <a href="/index" class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+
+        </div>
+        <div class="van-tabbar-item__text">
+          <div>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/home_nor.png">
+          </div>
+          <span class="name fs">Home</span>
+        </div>
+      </a>
+      <a href="/activity" class="van-tabbar-item ">
+        <div class="van-tabbar-item__icon">
+
+        </div>
+        <div class="van-tabbar-item__text">
+          <div>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/activity_nor.png">
+          </div>
+          <span class="name fs">Promotion</span>
+        </div>
+      </a>
+      <a href="/promotion1" class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+        </div>
+        <div class="van-tabbar-item__text">
+          <div class="muan">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/promotionBg.png" class="img">
+          </div>
+          <span class="name fs">Agent</span>
+        </div>
+      </a>
+      <a href="/wallet" class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+        </div>
+        <div class="van-tabbar-item__text">
+          <div>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/wallet_nor.png">
+          </div>
+          <span class="name fs">Wallet</span>
+        </div>
+      </a>
+      <a href="/home" class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+        </div>
+        <div class="van-tabbar-item__text">
+          <div>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/main_cur.png">
+          </div>
+          <span class="name fs">Me</span>
+        </div>
+      </a>
+    </div>
+  </div>
+    <!-- nav bottom end -->
+
+
+
+  <div class="bottomfloat_icon">
+
+        
+  </div>
+
+  <div class="customer" id="draggable">
+    <a href="/customerService">
+      <img src="https://in.piccdn123.com/static/_template_/orange/img/icon_sevice.png?v=2">
+    </a>
+  </div>
+
+  <!-- switch language start -->
+    <div class="nav-group-language">
+    <ul class="">
+
+            <li class="action" data-language="en_us">
+                <div class="left"><img src="/static/_template_/orange/img/area0.png"> <span>English</span></div>
+        <i></i>
+      </li>
+            <li data-language="hi_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>हिंदी</span></div>
+        <i></i>
+      </li>
+            <li data-language="tamil_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Tamil</span></div>
+        <i></i>
+      </li>
+            <li data-language="telugu_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Telugu</span></div>
+        <i></i>
+      </li>
+            <li data-language="bengali">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Bengali</span></div>
+        <i></i>
+      </li>
+            <li data-language="marathi_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Marathi</span></div>
+        <i></i>
+      </li>
+            <li data-language="gujarati_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Gujarati</span></div>
+        <i></i>
+      </li>
+            <li data-language="kannada_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Kannada</span></div>
+        <i></i>
+      </li>
+            <li data-language="punjabi_in">
+                <div class="left"><img src="/static/_template_/orange/img/area5.png"> <span>Punjabi</span></div>
+        <i></i>
+      </li>
+          </ul>
+  </div>
+  
+</div>
+
+<input type="hidden" value="0" id="isApp">
+<input type="hidden" value="https://res.inbofa999.com/india/upload/1099/172db66d4b7172bf374ae6e994346915.png" id="splashImage">
+<div class="empty__container template_empty_content" style="display: none">
+    <img alt="" src="https://in.piccdn123.com/static/_template_/orange/img/empty.png">
+    <p> No data </p>
+</div>
+
+<div class="infiniteScroll__loading template_no_more" style="display: none; justify-content: center; box-shadow: none;min-height:auto">
+    <div>No more</div>
+</div>
+
+<div class="no-data-text" style="display: none">No data</div>
+
+<div class="swal-overlay" id="confirm_dialog" style="display: none">
+    <div class="swal-modal">
+        <div class="swal-icon swal-icon--warning">
+          <span class="swal-icon--warning__body">
+              <span class="swal-icon--warning__dot"></span>
+          </span>
+        </div>
+        <div class="swal-text" style=""></div>
+        <div class="swal-footer">
+            <div class="swal-button-container">
+                <button class="swal-button swal-button--confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="van-dialog Warning" style="z-index: 9999; display: none;" id="common_confirm_dialog2">
+
+    <div class="van-dialog__header">Warning</div>
+
+    <div class="van-dialog__content">
+        <div class="van-dialog__message van-dialog__message--has-title">Are you sure to delete this message?</div>
+    </div>
+
+    <div class="van-hairline--top van-dialog__footer">
+        <button type="button" class="van-button van-button--large van-dialog__cancel">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Cancel</span>
+
+            </div>
+        </button>
+
+        <button type="button" class="van-button van-button--large van-dialog__confirm van-hairline--left">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Confirm</span>
+
+            </div>
+        </button>
+    </div>
+
+</div>
+
+<div class="van-overlay" style="z-index: 2001; display: none;"></div>
+
+
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="/static/js/clipboard.min.js"></script>
+<script src="/static/js2/jquery.cookie-1.4.1.min.js"></script>
+<script src="/static/js2/my-common.js?v=20250407002"></script>
+<script src="/static/js2/customer_service_drag.js?v=20250407002"></script>
+<script src="/static/js2/lazyload.min.js"></script>
+
+<script>
+    let _cancelBtnText = "Cancel";
+    let _confirmBtnText = "Confirm";
+    let _allText = "All";
+    let isApp = parseInt($("#isApp").val());
+    let splashImage = $("#splashImage").val();
+    if (!isApp && !sessionStorage.getItem('isload') && splashImage) {
+        sessionStorage.setItem('isload', true);
+        let html = `<div class="splash-screen">
+                        <img src='${splashImage}'>
+                    </div>`;
+        $('body').append(html);
+        setTimeout(function () {
+            $('body').find('.splash-screen').remove();
+        }, 3000);
+    }
+</script>
+
+<script>
+
+$(document).ready(function () {
+  $('.serviceCenter-wrap-header').click(function() {
+    $(".dialog").addClass('active');
+  });
+
+
+  $('.dialog__container-footer button').click(function() {
+    $(".dialog").removeClass('active');
+  });
+
+  $("#switch_language").click(function() {
+    $(".nav-group-language").css("transform","translate3d(-50%, 0px, 0px)");
+    $(".van-overlay").fadeIn();
+  });
+
+
+  $(".nav-group-language ul li").click(function() {
+    $(".nav-group-language").css("transform","translate3d(-50%, 100%, 0px)");
+    $(".van-overlay").fadeOut();
+    let currentLanguage = $("#current_language").val();
+    let selectLanguage = $(this).data('language');
+    if (currentLanguage !== selectLanguage) {
+      let ck = $("#ck_language").val();
+      $.cookie(ck, selectLanguage);
+      location.reload();
+    }
+  });
+
+  $(".van-overlay").click(function() {
+    $(".nav-group-language").css("transform","translate3d(-50%, 100%, 0px)");
+    $(".van-overlay").fadeOut();
+  });
+
+  $("#logout").click(function () {
+    window.location.href = '/logout';
+  });
+});
+
+
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92dfc2602a50ff8a","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"9dd8b4a891a34d86a0a1a53420b00769"}' crossorigin="anonymous"></script>
+</body>
+
+</html>

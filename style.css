@@ -1,0 +1,24 @@
+.login__container {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.login__container-heading__subTitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.passwordInput__container-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.passwordInput__container-label__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+/* Add additional styles as needed */

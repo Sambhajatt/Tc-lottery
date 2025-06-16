@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/app.css?v=20250407002">
+    <link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/chunk-vendors.css">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="screen-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-page-mode" content="app">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+<meta name="apple-mobile-web-app-title" content="Welcome">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta content="email=no" name="format-detection">
+<title>tc</title>
+<link rel="icon" href="https://res.inbofa999.com/india/upload/1099/bef9ea3c4972f411126f61ee8ba89c1f.png">
+<link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/main.css?v=20250407002">
+
+<style>
+    .mobileSelect .content .btnBar .ensure {
+        width: auto;
+    }
+    .chatroom-overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        touch-action: none;
+        max-width: 500px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+</style>
+
+<script src="https://tc9987.com/static/js2/lang.js?v=20250407002"></script>
+<script> setLanguage('en_us')</script>
+<script>
+    var imgCdn = "https://in.piccdn123.com";
+    var fontTemplate = "_template_/orange";
+    var copy_succ = "Copy successful";
+    var please_stay_tuned = "Please stay tuned";
+    var sever_error_500 = "Internal Server Error: 500, please contact customer service for assistance";
+    var request_timed_out = "Request timed out, please check your network";
+    var request_failed = "Request failed";
+    if (window.location.hash.startsWith('#/register')) {
+        const queryString = window.location.hash.split('?')[1];
+        if (queryString) {
+            const params = new URLSearchParams(queryString);
+            const invitationCode = params.get('invitationCode');
+            if (invitationCode) {
+                window.location.href = `/register?invite_code=${invitationCode}`;
+            } else {
+                window.location.href = '/register';
+            }
+        } else {
+            window.location.href = '/register';
+        }
+    }
+
+</script>
+</head>
+<body>
+
+<input type="hidden" id="game" value="vngo30s">
+<input type="hidden" id="game_name" value="Win Go 30S">
+<input type="hidden" id="game_category" value="vngo">
+<input type="hidden" id="current_period" value="2504101333">
+<input type="hidden" id="previous_period" value="2504101332">
+<input type="hidden" id="is_login" value="true">
+<input type="hidden" id="quick_bet_money1" value="1">
+<input type="hidden" id="quick_bet_money2" value="10">
+<input type="hidden" id="quick_bet_money3" value="100">
+<input type="hidden" id="quick_bet_money4" value="1000">
+
+<div id="app">
+
+
+    <div class="main">
+        <div class="flex">
+            <div class="content">
+
+                <div class="center">
+
+                    <div class="van-nav-bar van-hairline--bottom">
+
+                        <a href="/index" class="van-nav-bar__left">
+                            <i class="van-icon van-icon-arrow-left van-nav-bar__arrow">
+
+                            </i>
+                        </a>
+
+                        <div class="van-nav-bar__title van-ellipsis">
+                                                        <img src="https://res.inbofa999.com/india/upload/1099/04e072a00f685be156a91cafe81a9209.png" class="logo">
+                                                    </div>
+                        <div class="van-nav-bar__right">
+                            <a href="https://tc9987.com/game/rule2/vngo30s" class="introductions">
+                                Rules                            </a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="padding_bg">
+
+                        <div class="game chat-tab-body">
+
+                            <div class="noticeBar__container" style="width: auto;margin: 0 10px;">
+
+                                <img src="https://in.piccdn123.com/static/_template_/orange/img/notice.png">
+
+
+                                <div class="scrolling-container">
+                                    <marquee behavior="scroll" direction="left" scrollamount="5">
+                                                                                <p>OFFICIAL TC WEBSITE LINK: tcvvip.com please make sure, to always use this links to login , dont use other link to login to avoid any fraud, All recharge methods only available in RECHARGE menu on OFFICIAL TC website and application; 2.Submit 12 UTR number / UPI ref no for INSTANT recharge; 3. TC recharge account change everytime, DONOT SAVE to AVOID LOSS!!!</p>
+                                                                            </marquee>
+                                </div>
+
+
+
+                                <a href="https://tc9987.com/announcement">
+                                    <img src="https://in.piccdn123.com/static/_template_/orange/img/hot_icon.png"> Detail                                </a>
+
+
+                            </div>
+
+                            <div class="game-betting">
+                                <div class="tab">
+                                    <div class="box c-row" id="category_games">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="time-box c-row c-row-between">
+                                        <div class="info">
+                                            <div class="txt">Win Go 30S</div>
+                                            <div class="number" id="current_period_txt">2504101333</div>
+                                        </div>
+                                        <div class="out">
+                                            <div class="txt"> Time remaining </div>
+                                            <div class="number c-row c-row-middle c-flew-end">
+                                                <div class="time c-row" id="open_time">
+                                                    <div class="item time_num_1">0</div>
+                                                    <div class="item time_num_2">0</div>
+                                                    <div class="item c-row c-row-middle alone">:</div>
+                                                    <div class="item time_num_3">0</div>
+                                                    <div class="item time_num_4">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box">
+
+                                        <div class="mark-box" id="lock_view" style="display: none">
+                                            <div class="c-row c-row-middle-center" id="open_time_left">
+                                                <span class="item lock_num_1">0</span>
+                                                <span class="item lock_num_2">1</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="color-box c-row c-row-between">
+                                                <ul class="c-row">
+                                                                                                        <li class="vngo-bet-item" data-item="color@green" data-item-title="Green"
+                                                        data-odds="2" data-cls="btn num_green" >
+                                                        <button type="button" class="btn num_green">Green<span>2</span></button>
+                                                    </li>
+                                                                                                        <li class="vngo-bet-item" data-item="color@purple" data-item-title="Violet"
+                                                        data-odds="4.5" data-cls="btn num_violet" >
+                                                        <button type="button" class="btn num_violet">Violet<span>4.5</span></button>
+                                                    </li>
+                                                                                                        <li class="vngo-bet-item" data-item="color@red" data-item-title="Red"
+                                                        data-odds="2" data-cls="btn num_red" >
+                                                        <button type="button" class="btn num_red">Red<span>2</span></button>
+                                                    </li>
+                                                                                                    </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="number-box action c-row c-row-between c-flex-warp">
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="0" data-item="single@ak0"
+                                                    data-odds="9" data-cls="num numC-item0">
+                                                <div class="number c-row c-row-middle-center numC-item0">
+                                                    <!--                                                <span class="txt num_redViolet">0</span>-->
+                                                    <span class="txt">0</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="1" data-item="single@ak1"
+                                                    data-odds="9" data-cls="num numC-item1">
+                                                <div class="number c-row c-row-middle-center numC-item1">
+                                                    <!--                                                <span class="txt num_green">1</span>-->
+                                                    <span class="txt">1</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="2" data-item="single@ak2"
+                                                    data-odds="9" data-cls="num numC-item2">
+                                                <div class="number c-row c-row-middle-center numC-item2">
+                                                    <!--                                                <span class="txt num_red">2</span>-->
+                                                    <span class="txt">2</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="3" data-item="single@ak3"
+                                                    data-odds="9" data-cls="num numC-item3">
+                                                <div class="number c-row c-row-middle-center numC-item3">
+                                                    <!--                                                <span class="txt num_green">3</span>-->
+                                                    <span class="txt">3</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="4" data-item="single@ak4"
+                                                    data-odds="9" data-cls="num numC-item4">
+                                                <div class="number c-row c-row-middle-center numC-item4">
+                                                    <!--                                                <span class="txt num_red">4</span>-->
+                                                    <span class="txt">4</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="5" data-item="single@ak5"
+                                                    data-odds="9" data-cls="num numC-item5">
+                                                <div class="number c-row c-row-middle-center numC-item5">
+                                                    <!--                                                <span class="txt num_greenViolet">5</span>-->
+                                                    <span class="txt">5</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="6" data-item="single@ak6"
+                                                    data-odds="9" data-cls="num numC-item6">
+                                                <div class="number c-row c-row-middle-center numC-item6">
+                                                    <!--                                                <span class="txt num_red">6</span>-->
+                                                    <span class="txt">6</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="7" data-item="single@ak7"
+                                                    data-odds="9" data-cls="num numC-item7">
+                                                <div class="number c-row c-row-middle-center numC-item7">
+                                                    <!--                                                <span class="txt num_green">7</span>-->
+                                                    <span class="txt">7</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="8" data-item="single@ak8"
+                                                    data-odds="9" data-cls="num numC-item8">
+                                                <div class="number c-row c-row-middle-center numC-item8">
+                                                    <!--                                                <span class="txt num_red">8</span>-->
+                                                    <span class="txt">8</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                        <button type="button" class="item c-row c-row-middle-center vngo-bet-item"
+                                                    data-item-title="9" data-item="single@ak9"
+                                                    data-odds="9" data-cls="num numC-item9">
+                                                <div class="number c-row c-row-middle-center numC-item9">
+                                                    <!--                                                <span class="txt num_green">9</span>-->
+                                                    <span class="txt">9</span>
+                                                </div>
+                                                <div>9</div>
+                                            </button>
+                                                                                    </div>
+
+                                        <div>
+                                            <div class="color-box c-row c-row-between">
+                                                <ul class="c-row">
+                                                                                                        <li class="c-w-long vngo-bet-item" data-item="bs@big" data-item-title="Big"
+                                                        data-odds="2" data-cls="btn num_blue">
+                                                        <button type="button" class="btn num_blue">Big <span>2</span></button>
+                                                    </li>
+                                                                                                        <li class="c-w-long vngo-bet-item" data-item="bs@small" data-item-title="Small"
+                                                        data-odds="2" data-cls="btn num_yellow">
+                                                        <button type="button" class="btn num_yellow">Small <span>2</span></button>
+                                                    </li>
+                                                                                                    </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="game-list p-b-20">
+                                <div class="tab c-row c-row-between">
+                                    <div class="li c-row c-row-center" id="tab_history_result">
+                                        <span class="txt"> Game history </span>
+                                    </div>
+                                    <div class="li c-row c-row-center" id="tab_history_chart">
+                                        <span class="txt"> Chart </span>
+                                    </div>
+                                    <div class="li c-row c-row-center" id="tab_my_bet">
+                                        <span class="txt"> My history </span>
+                                    </div>
+                                </div>
+
+
+
+                                <div>
+                                    <div class="con-box" id="history_result_div">
+                                        <div class="list g-padding">
+                                            <div class="wrap">
+                                                <div class="c-tc van-row">
+                                                    <div class="van-col van-col--8"> Period </div>
+                                                    <div class="van-col van-col--5"> Number </div>
+                                                    <div class="van-col van-col--5"> B/S </div>
+                                                    <div class="van-col van-col--6"> Color </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="hb" id="history_result_list">
+                                                </div>
+                                            </div>
+                                            <div class="list-fooder"></div>
+                                        </div>
+
+                                        <div class="page-nav c-row c-row-center c-tc">
+                                            <input type="hidden" id="history_result_current_page" value="1">
+                                            <input type="hidden" id="history_result_page_count" value="1">
+                                            <div class="arr c-row c-row-middle-center" id="history_result_pre_page">
+                                                <i class="van-icon van-icon-arrow-left icon" style="font-size: 20px;">
+
+                                                </i>
+                                            </div>
+                                            <div class="number" id="history_result_page_num">1/1</div>
+                                            <div class="arr c-row c-row-middle-center" id="history_result_next_page">
+                                                <i class="van-icon van-icon-arrow icon action" style="font-size: 20px;">
+
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="con-box p-b-20" id="history_chart_div">
+                                        <div class="list g-padding">
+                                            <div class="wrap">
+                                                <div class="c-tc van-row">
+                                                    <div class="van-col van-col--8"> Period </div>
+                                                    <div class="van-col van-col--16"> Number  </div>
+                                                </div>
+                                            </div>
+                                            <div id="history_chart_list">
+                                            </div>
+                                            <div class="list-fooder"></div>
+                                        </div>
+                                        <div class="page-nav c-row c-row-center c-tc">
+                                            <input type="hidden" id="history_chart_current_page" value="1">
+                                            <input type="hidden" id="history_chart_page_count" value="1">
+                                            <div class="arr c-row c-row-middle-center" id="history_chart_pre_page">
+                                                <i class="van-icon van-icon-arrow-left icon" style="font-size: 20px;">
+                                                    <!---->
+                                                </i>
+                                            </div>
+                                            <div class="number" id="history_chart_page_num">1/1</div>
+                                            <div class="arr c-row c-row-middle-center" id="history_chart_next_page">
+                                                <i class="van-icon van-icon-arrow icon action" style="font-size: 20px;">
+                                                    <!---->
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="con-box p-b-20" id="my_bet_div">
+                                        <div class="list g-padding">
+
+                                            <div class="p-t-5 p-b-5" id="my_bet_empty" style="display: none">
+                                                <div class="van-empty">
+                                                    <div class="van-empty__image">
+                                                        <img src="https://in.piccdn123.com/static/_template_/orange/img/empty-image-default.png">
+                                                    </div>
+                                                    <p class="van-empty__description">No data</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="wrap my-bet-content-show" style="display: none">
+                                                <div class="c-tc van-row">
+                                                    <div class="van-col van-col--7"> Period </div>
+                                                    <div class="van-col van-col--7"> Bet Details </div>
+                                                    <div class="van-col van-col--5"> Bet Amount </div>
+                                                    <div class="van-col van-col--5"> Winning Amount </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="van-feed my-bet-content-show" id="my_bet_list">
+                                                <div class="reportItem">
+                                                    <div class="van-row van-row--flex van-row--justify-space-around" style="width: 100%;">
+                                                        <div class="item-content van-col van-col--7">
+                                                            <div class="item-size" style="color: rgb(121, 199, 38);">
+                                                                OB1691439451450249263
+                                                            </div>
+                                                            <div class="item-size">
+                                                                Aug/15/2023
+                                                            </div>
+                                                            <div class="item-size">21:19:25</div>
+                                                        </div>
+                                                        <div class="item-content van-col van-col--6">
+                                                            <div class="item-size">Speed Pinball</div>
+                                                            <div class="item-size" style="color: rgb(121, 199, 38);">
+                                                                No. 20437297 Period
+                                                            </div>
+                                                            <div class="item-size" style="color: rgb(46, 105, 169);">
+                                                                Handicap(B)
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-content van-col van-col--4">
+                                                            <div class="item-size">
+                                                                Third
+                                                            </div>
+                                                            <div class="item-size" style="color: rgb(46, 105, 169);">
+                                                                Small (Small)
+                                                            </div>
+                                                            <div>
+                                                                <i class="item-size" style="color: rgb(46, 105, 169); font-style: normal;">@</i>
+                                                                <span class="item-size" style="color: rgb(255, 31, 31);">1.95</span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="item-content van-col van-col--3">
+                                                            <div class="item-size">50</div>
+
+
+                                                        </div>
+                                                        <div class="item-content van-col van-col--4">
+                                                            <div class="item-size" style="color: rgb(14, 119, 200);">
+                                                                47.6
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="van-list__placeholder"></div>
+                                            </div>
+
+                                            <div class="list-fooder"></div>
+                                        </div>
+
+                                        <div class="page-nav c-row c-row-center c-tc my-bet-content-show" style="display: none">
+                                            <input type="hidden" id="my_bet_current_page" value="1">
+                                            <input type="hidden" id="my_bet_page_count" value="1">
+                                            <div class="arr c-row c-row-middle-center" id="my_bet_pre_page">
+                                                <i class="van-icon van-icon-arrow-left icon" style="font-size: 20px;">
+
+                                                </i>
+                                            </div>
+                                            <div class="number" id="my_bet_page_num">1/1</div>
+                                            <div class="arr c-row c-row-middle-center" id="my_bet_next_page">
+                                                <i class="van-icon van-icon-arrow icon action" style="font-size: 20px;">
+
+                                                </i>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <!-- 音效 -->
+                            <div>
+                                <audio id="voice1" muted="muted">
+                                    <source src="https://tc9987.com/static/media/di1.mp3" type="audio/mpeg">
+                                </audio>
+                                <audio id="voice2" muted="muted">
+                                    <source src="https://tc9987.com/static/media/di2.mp3" type="audio/mpeg">
+                                </audio>
+                            </div>
+
+
+                            <div class="game-amount" id="vngo-bet-div">
+                                <div>
+                                    <img src="https://in.piccdn123.com/static/_template_/orange/img/clear.svg" class="clear" id="vngo-close-bet-div">
+                                </div>
+                                <div class="top c-row c-row-between c-row-middle">
+                                    <div class="c-row c-row-middle">
+                                        <span class="txt">Balance：</span>
+                                        <h1 class="amount" id="balance_span">3821.00</h1>
+                                        <img src="https://in.piccdn123.com/static/_template_/orange/img/balanceen2.svg" class="money-refresh-btn" id="refresh_balance" width="16" height="16" style="margin-left: 5px;">
+                                        <a href="/payment" class="recharge">Deposit</a>
+                                    </div>
+                                    <div class="history c-row c-row-middle-center">
+                                        <a href="/user/betDetail">
+                                            Bet History                                            <img src="https://in.piccdn123.com/static/_template_/orange/img/history.svg" class="img">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="c-line"></div>
+                                <div class="info">
+                                    <span>  Select:</span>
+                                    <div class="color WinGo c-row c-row-middle" style="display: inline-block;line-height: 35px" id="select_bet_item_list">
+                                        <span class="num num_green">1</span>
+                                    </div>
+
+                                    <div class="item c-row c-row-between">
+                                        <div class="tit">Balance：</div>
+
+                                        <div style="display: flex; align-items: center; justify-content: center;">
+                                            <div class="c-row amount-box">
+                                                <div class="action li" id="quick_bet_money_1"><span>1000</span></div>
+                                                <div class="li" id="quick_bet_money_2"><span>10000</span></div>
+                                                <div class="li" id="quick_bet_money_3"><span>100000</span></div>
+                                                <div class="li" id="quick_bet_money_4"><span>1000000</span></div>
+                                            </div>
+
+                                            <img src="https://in.piccdn123.com/static/_template_/orange/img/edit.png" alt="" class="edit_btn" id="edit_quick_bet_money">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="item c-row c-row-between">
+                                        <div class="tit">Quantity：</div>
+                                        <div class="c-row c-row-between stepper-box">
+                                            <button class="li minus" id="dec_quantity">-</button>
+                                            <div class="digit-box van-cell van-field">
+                                                <div class="van-cell__value van-cell__value--alone van-field__value">
+                                                    <div class="van-field__body">
+                                                        <input type="number" value="1" class="van-field__control" id="quantityInput">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="li plus c-row c-row-middle-center action" id="asc_quantity">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="item c-row c-flew-end">
+                                        <div class="c-row multiple-box">
+                                                                                        <div class="li action">X<span>1</span></div>
+                                                                                                                                    <div class="li">X<span>5</span></div>
+                                                                                                                                    <div class="li">X<span>10</span></div>
+                                                                                                                                    <div class="li">X<span>20</span></div>
+                                                                                                                                    <div class="li">X<span>50</span></div>
+                                                                                                                                    <div class="li">X<span>100</span></div>
+                                                                                                                                    <div class="li">X<span>200</span></div>
+                                                                                                                                </div>
+                                    </div>
+
+
+
+                                    <div class="money-container" style="padding-right: 0;margin-top: 20px;">
+                                        <div class="reset-btn">Reset</div>
+                                        <div class="confirm-btn" id="btn_action_bet">
+                                            <span>Total amount ₹</span>
+                                            <span id="total_amount">0</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat-content chat-tab-body" style="display: none;">
+                            <input type="hidden" id="chatroomLink" value="">
+                            <iframe src="" frameborder="0" scrolling="auto" id="chatroom-iframe"></iframe>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <div style="height: 100%; display: none;">
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+<!-- 编辑快捷金额 -->
+<div class="quickselect-dialog van-dialog" style="z-index: 9999; display: none;">
+    <div class="van-dialog__content">
+        <header>Quick Amount Settings</header>
+        <div class="quick-content">
+            <div class="content-list">
+                <div style="position: relative;">
+                    <span class="icon">₹</span>
+                    <input id="set_quick_bet_money_1" placeholder="Enter Amount" type="number" class="field">
+                </div>
+                <div style="position: relative;">
+                    <span class="icon">₹</span>
+                    <input id="set_quick_bet_money_2" placeholder="Enter Amount" type="number" class="field">
+                </div>
+                <div style="position: relative;">
+                    <span class="icon">₹</span>
+                    <input id="set_quick_bet_money_3" placeholder="Enter Amount" type="number" class="field">
+                </div>
+                <div style="position: relative;">
+                    <span class="icon">₹</span>
+                    <input id="set_quick_bet_money_4" placeholder="Enter Amount" type="number" class="field">
+                </div>
+            </div>
+            <button class="van-button van-button--info van-button--normal van-button--block">
+                <span class="van-button__text">Confirm</span>
+            </button>
+        </div>
+    </div>
+    <div class="van-hairline--top van-dialog__footer"></div>
+</div>
+
+
+<div class="van-overlay" style="z-index: 1000; display: none;"></div>
+
+<!-- 开奖结果弹窗 -->
+<div class="Lottery_popup" id="latest_period_result_dialog">
+    <div class="Lottery_popup__container">
+
+        <div class="Lottery_popup__container-img number c-row c-row-middle-center numC-item4 latest_period_result">
+            <span class="txt">4</span>
+        </div>
+
+        <div class="Lottery_popup__container-title c-row c-row-middle c-column">
+            Period：
+            <h1 class="period">
+                2023082211101
+            </h1>
+        </div>
+
+        <div class="Lottery_popup__container-content" id="close_latest_period_result_dialog">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/close_white.png">
+        </div>
+
+    </div>
+</div>
+
+<div id="count_down_media" style="display:none;"></div>
+
+<div class="Congratulations_popup" id="lost_dialog">
+    <div class="Congratulations_block">
+        <img src="https://in.piccdn123.com/static/_template_/orange/img/game/head_lose.png?v=1" class="head_title">
+        <div class="Congratulations_module c_m_white">
+            <h1>It's a pity</h1>
+            <div class="Congratulations_results">
+                Game Results:
+                <div class="c-row c-row-middle c-flex-warp">
+                    <span class="li img6"></span>
+                    <span class="li img4"></span>
+                    <span class="li img1"></span>
+                </div>
+            </div>
+            <div class="Congratulations_bonus c_b_white">
+                <h2 class="">Lose</h2>
+                <div>
+                    <h4><span>Game:</span> <span>Win Go 30S</span></h4>
+                    <h4><span>Period:</span> <span class="period"></span></h4>
+                </div>
+            </div>
+            <div class="radio_bottom">
+                <div class="radio_check hit_dialog_auto_close">3 seconds auto close</div>
+            </div>
+        </div>
+        <div class="Lottery_popup__container-content">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/close_white.png" class="close_hit_result_dialog">
+        </div>
+    </div>
+</div>
+
+<div class="Congratulations_popup " id="win_dialog">
+    <div class="Congratulations_block">
+        <img src="https://in.piccdn123.com/static/_template_/orange/img/game/head.png?v=1" class="head_title">
+        <div class="Congratulations_module">
+            <h1>Congratulations</h1>
+            <div class="Congratulations_results">
+                Game Results:
+                <div class="c-row c-row-middle c-flex-warp">
+                    <span class="li img6"></span>
+                    <span class="li img4"></span>
+                    <span class="li img1"></span>
+                </div>
+            </div>
+            <div class="Congratulations_bonus">
+                <h3>Winning Prize</h3>
+                <h2 class=""> <span>₹</span> <span class="win-amount"></span></h2>
+                <div>
+                    <h4><span>Game:</span> <span>Win Go 30S</span></h4>
+                    <h4><span>Period:</span> <span class="period"></span></h4>
+                </div>
+            </div>
+            <div class="radio_bottom">
+                <div class="radio_check hit_dialog_auto_close">3 seconds auto close</div>
+            </div>
+        </div>
+        <div class="Lottery_popup__container-content">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/close_white.png" class="close_hit_result_dialog">
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" value="0" id="isApp">
+<input type="hidden" value="https://res.inbofa999.com/india/upload/1099/172db66d4b7172bf374ae6e994346915.png" id="splashImage">
+<div class="empty__container template_empty_content" style="display: none">
+    <img alt="" src="https://in.piccdn123.com/static/_template_/orange/img/empty.png">
+    <p> No data </p>
+</div>
+
+<div class="infiniteScroll__loading template_no_more" style="display: none; justify-content: center; box-shadow: none;min-height:auto">
+    <div>No more</div>
+</div>
+
+<div class="no-data-text" style="display: none">No data</div>
+
+<div class="swal-overlay" id="confirm_dialog" style="display: none">
+    <div class="swal-modal">
+        <div class="swal-icon swal-icon--warning">
+          <span class="swal-icon--warning__body">
+              <span class="swal-icon--warning__dot"></span>
+          </span>
+        </div>
+        <div class="swal-text" style=""></div>
+        <div class="swal-footer">
+            <div class="swal-button-container">
+                <button class="swal-button swal-button--confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="van-dialog Warning" style="z-index: 9999; display: none;" id="common_confirm_dialog2">
+
+    <div class="van-dialog__header">Warning</div>
+
+    <div class="van-dialog__content">
+        <div class="van-dialog__message van-dialog__message--has-title">Are you sure to delete this message?</div>
+    </div>
+
+    <div class="van-hairline--top van-dialog__footer">
+        <button type="button" class="van-button van-button--large van-dialog__cancel">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Cancel</span>
+
+            </div>
+        </button>
+
+        <button type="button" class="van-button van-button--large van-dialog__confirm van-hairline--left">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Confirm</span>
+
+            </div>
+        </button>
+    </div>
+
+</div>
+
+<div class="van-overlay" style="z-index: 2001; display: none;"></div>
+
+
+<script src="https://tc9987.com/static/js/jquery-1.11.1.min.js"></script>
+<script src="https://tc9987.com/static/js/clipboard.min.js"></script>
+<script src="https://tc9987.com/static/js2/jquery.cookie-1.4.1.min.js"></script>
+<script src="https://tc9987.com/static/js2/my-common.js?v=20250407002"></script>
+<script src="https://tc9987.com/static/js2/customer_service_drag.js?v=20250407002"></script>
+<script src="https://tc9987.com/static/js2/lazyload.min.js"></script>
+
+<script>
+    let _cancelBtnText = "Cancel";
+    let _confirmBtnText = "Confirm";
+    let _allText = "All";
+    let isApp = parseInt($("#isApp").val());
+    let splashImage = $("#splashImage").val();
+    if (!isApp && !sessionStorage.getItem('isload') && splashImage) {
+        sessionStorage.setItem('isload', true);
+        let html = `<div class="splash-screen">
+                        <img src='${splashImage}'>
+                    </div>`;
+        $('body').append(html);
+        setTimeout(function () {
+            $('body').find('.splash-screen').remove();
+        }, 3000);
+    }
+</script>
+<script src="https://tc9987.com//static/js2/game_vngo.js?v=20250407002"></script>
+
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92dfe2a44ae5a8fd","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"9dd8b4a891a34d86a0a1a53420b00769"}' crossorigin="anonymous"></script>
+</body>
+</html>

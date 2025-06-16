@@ -1,0 +1,699 @@
+
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="screen-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-page-mode" content="app">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+<meta name="apple-mobile-web-app-title" content="Welcome">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta content="email=no" name="format-detection">
+<title>tc</title>
+<link rel="icon" href="https://res.inbofa999.com/india/upload/1099/bef9ea3c4972f411126f61ee8ba89c1f.png">
+<link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/main.css?v=20250407002">
+
+<style>
+    .mobileSelect .content .btnBar .ensure {
+        width: auto;
+    }
+    .chatroom-overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        touch-action: none;
+        max-width: 500px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+</style>
+
+<script src="/static/js2/lang.js?v=20250407002"></script>
+<script> setLanguage('en_us')</script>
+<script>
+    var imgCdn = "https://in.piccdn123.com";
+    var fontTemplate = "_template_/orange";
+    var copy_succ = "Copy successful";
+    var please_stay_tuned = "Please stay tuned";
+    var sever_error_500 = "Internal Server Error: 500, please contact customer service for assistance";
+    var request_timed_out = "Request timed out, please check your network";
+    var request_failed = "Request failed";
+    if (window.location.hash.startsWith('#/register')) {
+        const queryString = window.location.hash.split('?')[1];
+        if (queryString) {
+            const params = new URLSearchParams(queryString);
+            const invitationCode = params.get('invitationCode');
+            if (invitationCode) {
+                window.location.href = `/register?invite_code=${invitationCode}`;
+            } else {
+                window.location.href = '/register';
+            }
+        } else {
+            window.location.href = '/register';
+        }
+    }
+
+</script>
+  <link rel="stylesheet" type="text/css" href="https://in.piccdn123.com/static/_template_/orange/css/page-promotion.css?v=20250407002">
+</head>
+<body style="font-size: 12px;">
+  <div id="app">
+
+
+          <div class="van-nav-bar van-hairline--bottom">
+              
+
+              <div class="van-nav-bar__title van-ellipsis">
+                  <div>
+                      Agent                  </div>
+              </div>
+
+<!--              <div class="van-nav-bar__right">-->
+<!--                  <a href="/agent/subordinate">-->
+<!--                      <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/subordinate.png" style="width: 24px;height: 24px;">-->
+<!--                  </a>-->
+<!--              </div>-->
+          </div>
+
+
+
+    <div class="container">
+
+
+      <div class="top_head">
+
+        <div class="tip">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Upgrade the level to increase commission income</font>
+          </font>
+        </div>
+        
+        <div class="top_head_group">
+          
+          
+          <div class="top_head_block">
+            
+            <div class="amount_txt">
+              <div class="amount" id="proxy_commission">12062.72</div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Commission Balance</font>
+              </font>
+            </div>
+
+
+          </div>
+
+          <div class="top_head_block">
+            
+            <div class="amount_txt">
+              <div class="amount">10720.72</div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Total Commission Yesterday</font>
+              </font>
+            </div>
+
+
+            
+          </div>
+
+        </div>
+
+
+        
+
+        <div class="top_head_btn" style="display: flex">
+            <a href="javascript:void(0);" id="withdrawToBalance">Turn Into Balance</a>
+                        <a href="/agent/withdraw">Commission Withdrawal</a>
+                    </div>
+
+
+      </div>
+
+      <div class="info_content">
+        <div class="info">
+          <div class="head">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Direct Subordinates</font>
+            </font>
+          </div>
+          <div class="line1">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">1520</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Registration Accounts</font>
+            </font>
+          </div>
+          <div class="line2">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">1020</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Deposit Accounts</font>
+            </font>
+          </div>
+          <div class="line3">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">528290</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Deposit Amount</font>
+            </font>
+          </div>
+          <div class="line1">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">239</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">New Deposit Accounts</font>
+            </font>
+          </div>
+        </div>
+        <div class="info">
+          <div class="head u2">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Team Subordinates</font>
+            </font>
+          </div>
+          <div class="line1">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">3270</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Registration Accounts</font>
+            </font>
+          </div>
+          <div class="line2">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">2710</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Deposit Accounts</font>
+            </font>
+          </div>
+          <div class="line3">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">1263780</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Deposit Amount</font>
+            </font>
+          </div>
+          <div class="line1">
+            <div>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">830</font>
+              </font>
+            </div>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">New Deposit Accounts</font>
+            </font>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="shareBtnContainer">
+                  <a href="/agent/share">
+                      <button class="shareBtn">
+                          <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">INVITATION LINK</font>
+                          </font>
+                      </button>
+                  </a>
+      </div>
+      <div class="promote__cell">
+        <div class="promote__cell-item" id="copyButton">
+          <div class="label">
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/copy_code.png" alt="">
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Copy Invitation Code</font>
+              </font>
+            </span>
+          </div>
+          <div class="arrow">
+            <span id="original">A74C612392872</span>
+            <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+          </div>
+        </div>
+
+                  <a href="/subordinate">
+                      <div class="promote__cell-item">
+                          
+                              <div class="label">
+                                  <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/team_port.png" alt="">
+                                  <span>
+                                      <font style="vertical-align: inherit;">
+                                          <font style="vertical-align: inherit;">Subordinate Data</font>
+                                      </font>
+                                  </span>
+                              </div>
+                              <div class="arrow">
+                                  
+                                  <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+                              </div>
+                      </div>
+                  </a>
+
+                  <a href="/agent/commissionDetails">
+                      <div class="promote__cell-item">
+                          <div class="label">
+                              <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/commission.png" alt="">
+                              <span>
+                                  <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">Commission Details</font>
+                                  </font>
+                              </span>
+                          </div>
+                          <div class="arrow">
+                              
+                              <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+                          </div>
+                      </div>
+                  </a>
+
+                  <a href="/agent/subordinate">
+                    <div class="promote__cell-item">
+                        <div class="label">
+                            <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/subordinate.png" alt="">
+                            <span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">New Subordinates</font>
+                                </font>
+                            </span>
+                        </div>
+                        <div class="arrow">
+                            
+                            <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+                        </div>
+                    </div>
+                </a>
+
+                  <a href="/agent/rule">
+                      <div class="promote__cell-item">
+                          <div class="label">
+                              <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/rule.png" alt="">
+                              <span>
+                                  <font style="vertical-align: inherit;">
+                                      <font style="vertical-align: inherit;">Invitation Rules</font>
+                                  </font>
+                              </span>
+                          </div>
+                          <div class="arrow">
+                              
+                              <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+                          </div>
+                      </div>
+                  </a>
+
+        <a href="/customerService">
+          <div class="promote__cell-item">
+            <div class="label">
+              <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/server.png" alt="">
+              <span>
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">Agent Line Customer Service</font>
+                </font>
+              </span>
+            </div>
+            <div class="arrow">
+              
+              <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+            </div>
+          </div>
+        </a>
+
+
+          <a href="/agent/rebateRatio">
+              <div class="promote__cell-item">
+                  <div class="label">
+                      <img src="https://in.piccdn123.com/static/_template_/orange/img/promotion/rebateRatio.png" alt="">
+                      <span>
+                          <font style="vertical-align: inherit;">
+                              <font style="vertical-align: inherit;">Rebate Ratio</font>
+                          </font>
+                      </span>
+                  </div>
+                  <div class="arrow">
+
+                      <img src="https://in.piccdn123.com/static/_template_/orange/img/right.png" alt="">
+                  </div>
+              </div>
+          </a>
+
+          
+
+      </div>
+      <div class="commission">
+        <div class="commission__title">
+          <i class="van-badge__wrapper van-icon">
+            
+            <img class="van-icon__image" src="https://in.piccdn123.com/static/_template_/orange/img/promotion/money.png">
+            
+          </i>
+          <span>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Promotion Data</font>
+            </font>
+          </span>
+        </div>
+        <div class="commission__body">
+          <div>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">32710.62</font>
+              </font>
+            </span>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">This Week's Commission</font>
+              </font>
+            </span>
+          </div>
+          <span></span>
+          <div>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">427170.72</font>
+              </font>
+            </span>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Total Commission</font>
+              </font>
+            </span>
+          </div>
+        </div>
+        <div class="commission__body">
+          <div>
+            <span>36290</span>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Direct Subordinates</font>
+              </font>
+            </span>
+          </div>
+          <span></span>
+          <div>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">66270</font>
+              </font>
+            </span>
+            <span>
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Total Subordinates</font>
+              </font>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="customer" id="draggable">
+		<a href="/customerService">
+		  <img src="https://in.piccdn123.com/static/_template_/orange/img/icon_sevice.png?v=2">
+		</a>
+	</div>
+
+          <!-- 底部导航 start -->
+            <div class="nav c-pr">
+        <div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed">
+          <a href="/index" class="van-tabbar-item">
+            <div class="van-tabbar-item__icon">
+              
+            </div>
+            <div class="van-tabbar-item__text">
+              <div>
+                <img src="https://in.piccdn123.com/static/_template_/orange/img/home_nor.png">
+              </div>
+              <span class="name fs">Home</span>
+            </div>
+          </a>
+          <a href="/activity" class="van-tabbar-item">
+            <div class="van-tabbar-item__icon">
+              
+            </div>
+            <div class="van-tabbar-item__text">
+              <div>
+                <img src="https://in.piccdn123.com/static/_template_/orange/img/activity_nor.png">
+              </div>
+              <span class="name fs">Promotion</span>
+            </div>
+          </a>
+          <a href="/promotion1" class="van-tabbar-item van-tabbar-item--active">
+            <div class="van-tabbar-item__icon">
+              
+            </div>
+            <div class="van-tabbar-item__text">
+              <div class="muan">
+                <img src="https://in.piccdn123.com/static/_template_/orange/img/promotionBg.png" class="img">
+              </div>
+              <span class="name fs">Agent</span>
+            </div>
+          </a>
+          <a href="/wallet" class="van-tabbar-item">
+            <div class="van-tabbar-item__icon">
+              
+            </div>
+            <div class="van-tabbar-item__text">
+              <div>
+                <img src="https://in.piccdn123.com/static/_template_/orange/img/wallet_nor.png">
+              </div>
+              <span class="name fs">Wallet</span>
+            </div>
+          </a>
+          <a href="/home" class="van-tabbar-item">
+            <div class="van-tabbar-item__icon">
+              
+            </div>
+            <div class="van-tabbar-item__text">
+              <div>
+                <img src="https://in.piccdn123.com/static/_template_/orange/img/main_nor.png">
+              </div>
+              <span class="name fs">Me</span>
+            </div>
+          </a>
+        </div>
+      </div>
+            <!-- 底部导航 end -->
+
+    
+  </div>
+
+
+
+      
+  <!-- 复制 -->
+  <div class="van-popup van-popup--center van-toast van-toast--middle van-toast--success" style="z-index: 2001;display: none;">
+    <i class="van-badge__wrapper van-icon van-icon-success van-toast__icon">
+              <img src="https://in.piccdn123.com/static/_template_/orange/img/gx_icon.png" style="width: 48px; height: 48px;">
+    </i>
+    <div class="van-toast__text">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Copy successful</font>
+      </font>
+    </div>
+    
+  </div>
+
+
+  <!-- 复制 -->
+  <input type="hidden" value="0" id="isApp">
+<input type="hidden" value="https://res.inbofa999.com/india/upload/1099/172db66d4b7172bf374ae6e994346915.png" id="splashImage">
+<div class="empty__container template_empty_content" style="display: none">
+    <img alt="" src="https://in.piccdn123.com/static/_template_/orange/img/empty.png">
+    <p> No data </p>
+</div>
+
+<div class="infiniteScroll__loading template_no_more" style="display: none; justify-content: center; box-shadow: none;min-height:auto">
+    <div>No more</div>
+</div>
+
+<div class="no-data-text" style="display: none">No data</div>
+
+<div class="swal-overlay" id="confirm_dialog" style="display: none">
+    <div class="swal-modal">
+        <div class="swal-icon swal-icon--warning">
+          <span class="swal-icon--warning__body">
+              <span class="swal-icon--warning__dot"></span>
+          </span>
+        </div>
+        <div class="swal-text" style=""></div>
+        <div class="swal-footer">
+            <div class="swal-button-container">
+                <button class="swal-button swal-button--confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="van-dialog Warning" style="z-index: 9999; display: none;" id="common_confirm_dialog2">
+
+    <div class="van-dialog__header">Warning</div>
+
+    <div class="van-dialog__content">
+        <div class="van-dialog__message van-dialog__message--has-title">Are you sure to delete this message?</div>
+    </div>
+
+    <div class="van-hairline--top van-dialog__footer">
+        <button type="button" class="van-button van-button--large van-dialog__cancel">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Cancel</span>
+
+            </div>
+        </button>
+
+        <button type="button" class="van-button van-button--large van-dialog__confirm van-hairline--left">
+            <div class="van-button__content">
+
+                <span class="van-button__text">Confirm</span>
+
+            </div>
+        </button>
+    </div>
+
+</div>
+
+<div class="van-overlay" style="z-index: 2001; display: none;"></div>
+
+
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="/static/js/clipboard.min.js"></script>
+<script src="/static/js2/jquery.cookie-1.4.1.min.js"></script>
+<script src="/static/js2/my-common.js?v=20250407002"></script>
+<script src="/static/js2/customer_service_drag.js?v=20250407002"></script>
+<script src="/static/js2/lazyload.min.js"></script>
+
+<script>
+    let _cancelBtnText = "Cancel";
+    let _confirmBtnText = "Confirm";
+    let _allText = "All";
+    let isApp = parseInt($("#isApp").val());
+    let splashImage = $("#splashImage").val();
+    if (!isApp && !sessionStorage.getItem('isload') && splashImage) {
+        sessionStorage.setItem('isload', true);
+        let html = `<div class="splash-screen">
+                        <img src='${splashImage}'>
+                    </div>`;
+        $('body').append(html);
+        setTimeout(function () {
+            $('body').find('.splash-screen').remove();
+        }, 3000);
+    }
+</script>
+
+  <script>
+    $(document).ready(function() {
+
+      // 复制链接toast
+      var cc = document.getElementById("original");
+      if (cc !== null) {
+        var ss = cc.innerHTML;
+        var clipboard = new ClipboardJS('#copyButton', {
+          text: function() {
+            return ss;
+          }
+        });
+
+        clipboard.on('success', function(e) {
+          $('.van-toast--success').fadeIn(200).delay(2000).fadeOut(500);
+        });
+
+        clipboard.on('error', function(e) {
+          console.log(e);
+        });
+      }
+
+    });
+
+  </script>
+  <!-- 复制 -->
+
+
+
+  <!-- 拖动右下角悬浮球 -->
+<script>
+  $(document).ready(function() {
+      var draggable = $("#draggable");
+      var offsetX, offsetY, isDragging = false;
+
+      draggable.on("touchstart", function(e) {
+          var touch = e.originalEvent.touches[0];
+          isDragging = true;
+          offsetX = touch.clientX - draggable.offset().left;
+          offsetY = touch.clientY - draggable.offset().top;
+
+          // 阻止默认事件，防止页面滚动
+          e.preventDefault();
+      });
+
+      $(document).on("touchmove", function(e) {
+          if (isDragging) {
+              var touch = e.originalEvent.touches[0];
+              var x = touch.clientX - offsetX;
+              var y = touch.clientY - offsetY;
+              draggable.css({
+                  left: x + "px",
+                  top: y + "px"
+              });
+
+              // 阻止默认事件，防止页面滚动
+              e.preventDefault();
+          }
+      });
+
+      $(document).on("touchend", function() {
+          isDragging = false;
+      });
+
+      $("#withdrawToBalance").click(function(){
+        makePostRequest('/agent/withdrawToBalance', {
+                }, function (response) {
+                   if(response.code === 1){
+                      $('#proxy_commission').text(0);
+                      toast(response.msg);
+                   } else {
+                      toast(response.msg);
+                   }
+                });          
+      });
+  });
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92dfc4ca9cb572da","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"9dd8b4a891a34d86a0a1a53420b00769"}' crossorigin="anonymous"></script>
+</body>
+
+</html>

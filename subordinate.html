@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Subordinate data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.15.4/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f5f5;
+        }
+        
+        .header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-button {
+            font-size: 20px;
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+        }
+        
+        .title {
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            margin-right: 20px;
+        }
+        
+        .search-container {
+            margin: 15px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+        
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .filters {
+            margin: 15px;
+            display: flex;
+            gap: 10px;
+            width: 90%;
+            margin: 0 10px;
+        }
+        
+        .filter-select {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .datetime-picker {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .datetime-picker.show {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .picker-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .picker-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .picker-header {
+            color: black;
+            font-size: 22px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .picker-title {
+            font-weight: 300;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .picker-actions {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .picker-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .picker-button:hover {
+            opacity: 0.8;
+        }
+        
+        .picker-button.cancel {
+            color: #999;
+            font-weight: 300;
+        }
+        
+        .picker-button.confirm {
+            color: #ff8616;
+            font-weight: 400;
+        }
+        
+        .picker-content {
+            display: flex;
+            gap: 40px;
+            padding: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .scroll-container {
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            width: 70px;
+            height: 200px;
+            border: none;
+            margin: 0;
+            background: transparent;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+            align-items: center;
+        }
+
+        .scroll-container::before,
+        .scroll-container::after {
+            content: '';
+            display: block;
+            height: 100px; /* Height of 2 empty slots */
+            flex-shrink: 0;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scroll-item {
+            flex: none;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: center;
+            font-size: 18px;
+            color: #666;
+            background: transparent;
+            border: none;
+            transition: all 0.3s;
+            font-weight: 300;
+            width: 100%;
+        }
+        
+        .scroll-item.active {
+            color: rgb(37, 30, 30);
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        .selected-date {
+            padding: 12px;
+        
+            border: none;
+            border-radius: 5px;
+            background: white;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .stats-container {
+            margin: 15px;
+            background: #ff8616;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+        }
+        
+        .stats-row {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .stats-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .stat-item:first-child {
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .no-data img {
+            width: 150px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        .no-data-text {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .user-card {
+            background: white;
+            margin: 16px;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .user-id {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #667;
+            font-size: 14px;
+        }
+        
+        .copy-icon {
+            color: #666;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .user-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .user-details span:nth-child(odd) {
+            color: #667;
+        }
+        
+        .user-details span:nth-child(even) {
+            text-align: right;
+            font-weight: 500;
+            color: #667;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/promotion1" class="back-button">←</a>
+        <div class="title">Subordinate data</div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search subordinate UID">
+        <div class="search-icon">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
+    <div class="filters">
+        <select class="filter-select">
+            <option>All</option>
+            <option>Tier1</option>
+            <option>Tier2</option>
+            <option>Tier3</option>
+            <option>Tier4</option>
+            <option>Tier5</option>
+            <option>Tier6</option>
+        </select>
+        <input type="text" class="selected-date" readonly id="selected-date" style="width:170px" >
+        <div class="picker-overlay" id="picker-overlay"></div>
+        <div class="datetime-picker" id="datetime-picker">
+            <div class="picker-header">
+                <button class="picker-button cancel" id="cancel-picker">Cancel</button>
+                <div class="picker-title"></div>
+                <div class="picker-actions">
+                    <button class="picker-button confirm" id="confirm-picker">ok</button>
+                </div>
+            </div>
+            <div class="picker-content">
+                <div class="scroll-container">
+                </div>
+                <div class="scroll-container">
+                </div>
+                <div class="scroll-container">
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <div class="stats-container">
+        <div class="stats-row">
+            <div class="stat-item">
+                <div id="deposit-number" class="stat-value">0</div>
+                <div class="stat-label">Deposit number</div>
+            </div>
+            <div class="stat-item">
+                <div id="deposit-amount" class="stat-value">0</div>
+                <div class="stat-label">Deposit amount</div>
+            </div>
+        </div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div id="number-of-bettors" class="stat-value">0</div>
+                <div class="stat-label">Number of bettors</div>
+            </div>
+            <div class="stat-item">
+                <div id="total-bet" class="stat-value">0</div>
+                <div class="stat-label">Total bet</div>
+            </div>
+        </div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div id="first-deposit-count" class="stat-value">0</div>
+                <div class="stat-label">Number of people making first deposit</div>
+            </div>
+            <div class="stat-item">
+                <div id="second-deposit-amount" class="stat-value">0</div>
+                <div class="stat-label">First deposit amount</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>0</span>
+            <span>Deposit amount</span><span>0</span>
+            <span>Commission</span><span>0</span>
+            <span>Time</span><span></span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712988</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>3451</span>
+            <span>Commission</span><span>173</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712346</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>921</span>
+            <span>Commission</span><span>47</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712790</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>4201</span>
+            <span>Commission</span><span>211</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712124</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2671</span>
+            <span>Commission</span><span>134</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712655</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>3891</span>
+            <span>Commission</span><span>195</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712877</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2341</span>
+            <span>Commission</span><span>118</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712433</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>4101</span>
+            <span>Commission</span><span>206</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712902</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>1781</span>
+            <span>Commission</span><span>90</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712235</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>3451</span>
+            <span>Commission</span><span>173</span>
+            <span>Time</span><span>2026-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712567</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>1890</span>
+            <span>Commission</span><span>94</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712890</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2670</span>
+            <span>Commission</span><span>133</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712111</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>780</span>
+            <span>Commission</span><span>39</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712777</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>3890</span>
+            <span>Commission</span><span>194</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712445</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2340</span>
+            <span>Commission</span><span>117</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712999</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>4670</span>
+            <span>Commission</span><span>233</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712222</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2340</span>
+            <span>Commission</span><span>117</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712666</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>1890</span>
+            <span>Commission</span><span>94</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712888</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>3670</span>
+            <span>Commission</span><span>183</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1712321</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>2900</span>
+            <span>Commission</span><span>145</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713000</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>5000</span>
+            <span>Commission</span><span>25</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713001</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>6000</span>
+            <span>Commission</span><span>30</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713002</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>7000</span>
+            <span>Commission</span><span>35</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713003</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>8000</span>
+            <span>Commission</span><span>40</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713004</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>9000</span>
+            <span>Commission</span><span>45</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713005</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>10000</span>
+            <span>Commission</span><span>50</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713006</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>11000</span>
+            <span>Commission</span><span>55</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713007</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>12000</span>
+            <span>Commission</span><span>60</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713008</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>13000</span>
+            <span>Commission</span><span>65</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713009</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>14000</span>
+            <span>Commission</span><span>70</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713010</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>15000</span>
+            <span>Commission</span><span>75</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713011</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>16000</span>
+            <span>Commission</span><span>80</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713012</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>17000</span>
+            <span>Commission</span><span>85</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713013</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>18000</span>
+            <span>Commission</span><span>90</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713014</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>19000</span>
+            <span>Commission</span><span>95</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713015</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>20000</span>
+            <span>Commission</span><span>100</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713016</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>21000</span>
+            <span>Commission</span><span>105</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713017</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>22000</span>
+            <span>Commission</span><span>110</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713018</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>23000</span>
+            <span>Commission</span><span>115</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713019</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span>1</span>
+            <span>Deposit amount</span><span>24000</span>
+            <span>Commission</span><span>120</span>
+            <span>Time</span><span>2025-02-11</span>
+        </div>
+    </div>
+    <div class="user-card">
+        <div class="user-id">
+            <span>UID:1713020</span>
+            <i class="fas fa-copy copy-icon"></i>
+        </div>
+        <div class="user-details">
+            <span>Level</span><span></span>
+            <span>Deposit amount</span><span></span>
+            <span>Commission</span><span></span>
+            <span>Time</span><span></span>
+        </div>
+    </div>
+
+    <div class="no-data">
+      
+        <div class="no-data-text">No more</div>
+    </div>
+
+    <script>
+        function isBackDate(year, month, day) {
+            const selectedDate = new Date(year, month - 1, day);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return selectedDate < today;
+        }
+
+        function updateAllTimeDisplays() {
+            const selectedDate = new Date(document.getElementById('selected-date').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate >= today) {
+                alert('Please select a past date');
+                return false;
+            }
+            document.querySelectorAll('.user-card').forEach(card => {
+                const userIdElement = card.querySelector('.user-id span');
+                const randomUid = `UID:171${Math.floor(1000 + Math.random() * 9000)}`;
+                userIdElement.textContent = randomUid;
+
+                const randomLevel = Math.floor(Math.random() * 3) + 1;
+                const levelElement = card.querySelector('.user-details span:nth-child(1)');
+                levelElement.nextElementSibling.textContent = randomLevel;
+
+                const randomDeposit = Math.floor(Math.random() * (5000 - 100 + 1)) + 100;
+                const depositElement = card.querySelector('.user-details span:nth-child(3)');
+                depositElement.nextElementSibling.textContent = Math.floor(randomDeposit / 100) * 100;
+
+                const commissionAmount = Math.floor((randomDeposit * 0.005));
+                const commissionElement = card.querySelector('.user-details span:nth-child(5)');
+                commissionElement.nextElementSibling.textContent = commissionAmount;
+            });
+            return true;
+        }
+
+        function generateRandomStats() {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const formattedDate = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+
+            updateAllTimeDisplays();
+
+            document.querySelectorAll('.user-details').forEach(details => {
+                const timeSpan = details.querySelector('span:last-child');
+                timeSpan.textContent = formattedDate;
+            });
+
+            const depositNumber = Math.floor(Math.random() * (800 - 400 + 1)) + 500;
+            const depositAmount = Math.floor(Math.random() * (997382 - 109372 + 1)) + 309372;
+
+            document.getElementById('deposit-number').textContent = depositNumber;
+            document.getElementById('deposit-amount').textContent = depositAmount;
+
+            const numberOfBettors = Math.ceil(depositNumber * 1.08);
+            const totalBet = Math.ceil(depositAmount * 1.25);
+            const firstDepositCount = Math.floor(depositNumber * 0.59);
+
+            document.getElementById('number-of-bettors').textContent = numberOfBettors;
+            document.getElementById('total-bet').textContent = totalBet;
+            document.getElementById('first-deposit-count').textContent = firstDepositCount;
+
+            const randomSecondDeposit = Math.floor(firstDepositCount * 119);
+            document.getElementById('second-deposit-amount').textContent = randomSecondDeposit;
+        }
+
+        window.onload = function() {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const formattedDate = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+            document.getElementById('selected-date').value = formattedDate;
+            updateAllTimeDisplays();
+            generateRandomStats();
+        };
+
+        const filterSelects = document.querySelectorAll('.filter-select');
+        filterSelects.forEach(select => {
+            select.addEventListener('change', generateRandomStats);
+        });
+
+        document.querySelectorAll('.copy-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const uid = this.previousElementSibling.textContent;
+                navigator.clipboard.writeText(uid).then(() => {
+                    alert('UID copied to clipboard!');
+                });
+            });
+        });
+
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const searchValue = e.target.value.toLowerCase();
+            document.querySelectorAll('.user-card').forEach(card => {
+                const uid = card.querySelector('.user-id span').textContent.toLowerCase();
+                if (uid.includes(searchValue)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+      
+        const selectedDateInput = document.getElementById('selected-date');
+        const datePicker = document.getElementById('datetime-picker');
+        const pickerOverlay = document.getElementById('picker-overlay');
+        const cancelPicker = document.getElementById('cancel-picker');
+        const confirmPicker = document.getElementById('confirm-picker');
+
+        selectedDateInput.addEventListener('click', () => {
+            datePicker.classList.add('show');
+            pickerOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            const today = new Date();
+            setTimeout(() => {
+                // Select current year
+                selectYear(today.getFullYear());
+                // Select current month 
+                selectMonth(today.getMonth() + 1);
+                
+                // Scroll containers to position
+                document.querySelectorAll('.scroll-container').forEach((container, index) => {
+                    const selectedItem = container.querySelector('.scroll-item.active');
+                    if (selectedItem) {
+                        container.scrollTo({
+                            top: selectedItem.offsetTop - (container.clientHeight - selectedItem.offsetHeight) / 2,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }, 100);
+        });
+
+        function closePicker() {
+            datePicker.classList.remove('show');
+            pickerOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        cancelPicker.addEventListener('click', closePicker);
+        pickerOverlay.addEventListener('click', closePicker);
+
+        confirmPicker.addEventListener('click', () => {
+            const year = document.querySelector('.scroll-container:nth-child(1) .active').textContent;
+            const month = document.querySelector('.scroll-container:nth-child(2) .active').textContent;
+            const day = document.querySelector('.scroll-container:nth-child(3) .active').textContent;
+            
+            if (!isBackDate(year, month, day)) {
+                alert('Please select a past date');
+                return;
+            }
+            
+            selectedDateInput.value = `${year}-${month}-${day}`;
+            closePicker();
+            generateRandomStats();
+        });
+
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth() + 1;
+        const currentDay = new Date().getDate();
+
+        for (let year = currentYear - 3; year <= currentYear; year++) {
+            const yearItem = document.createElement('div');
+            yearItem.classList.add('scroll-item');
+            yearItem.dataset.type = 'year';
+            yearItem.textContent = year;
+            yearItem.addEventListener('click', () => {
+                selectYear(year);
+                highlightSelected(yearItem);
+            }); 
+            document.querySelector('.scroll-container:nth-child(1)').appendChild(yearItem);
+        }
+
+        for (let month = 1; month <= 12; month++) {
+            const monthItem = document.createElement('div');
+            monthItem.classList.add('scroll-item');
+            monthItem.dataset.type = 'month';
+            monthItem.textContent = month < 10 ? '0' + month : month;
+            if (currentYear === 2025 && month > currentMonth) {
+                continue;
+            }
+            monthItem.addEventListener('click', () => {
+                selectMonth(month);
+                highlightSelected(monthItem);
+            });
+            document.querySelector('.scroll-container:nth-child(2)').appendChild(monthItem);
+        }
+
+        for (let day = 1; day <= 31; day++) {
+            const currentDate = new Date();
+            if (!isBackDate(currentYear, currentMonth, day)) {
+                continue;
+            }
+            const dayItem = document.createElement('div');
+            dayItem.classList.add('scroll-item');
+            dayItem.dataset.type = 'day';
+            dayItem.textContent = day < 10 ? '0' + day : day;
+            dayItem.addEventListener('click', () => {
+                selectDay(day);
+                highlightSelected(dayItem);
+            });
+            document.querySelector('.scroll-container:nth-child(3)').appendChild(dayItem);
+        }
+
+        function highlightSelected(item) {
+            const siblings = item.parentNode.children;
+            for (let sibling of siblings) {
+                sibling.classList.remove('active');
+            }
+            item.classList.add('active');
+        }
+
+        function selectYear(year) {
+            const yearItems = document.querySelectorAll('.scroll-container:nth-child(1) .scroll-item');
+            yearItems.forEach(item => {
+                if (item.textContent === year.toString()) {
+                    highlightSelected(item);
+                }
+            });
+        }
+
+        function selectMonth(month) {
+            const monthItems = document.querySelectorAll('.scroll-container:nth-child(2) .scroll-item');
+            monthItems.forEach(item => {
+                if (parseInt(item.textContent) === month) {
+                    highlightSelected(item);
+                    const container = item.parentNode;
+                    container.scrollTo({
+                        top: item.offsetTop - (container.clientHeight - item.offsetHeight) / 2,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        function selectDay(day) {
+            const dayItems = document.querySelectorAll('.scroll-container:nth-child(3) .scroll-item');
+            dayItems.forEach(item => {
+                if (parseInt(item.textContent) === day) {
+                    highlightSelected(item);
+                    const container = item.parentNode;
+                    container.scrollTo({
+                        top: item.offsetTop - (container.clientHeight - item.offsetHeight) / 2,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        document.querySelectorAll('.scroll-container').forEach(container => {
+            let isScrolling;
+            container.addEventListener('scroll', () => {
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    const items = container.querySelectorAll('.scroll-item');
+                    const containerRect = container.getBoundingClientRect();
+                    const containerCenter = containerRect.top + containerRect.height / 2;
+                    
+                    let closestItem = null;
+                    let minDistance = Infinity;
+                    
+                    items.forEach(item => {
+                        const itemRect = item.getBoundingClientRect();
+                        const itemCenter = itemRect.top + itemRect.height / 2;
+                        const distance = Math.abs(containerCenter - itemCenter);
+                        
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            closestItem = item;
+                        }
+                    });
+                    
+                    if (closestItem) {
+                        items.forEach(item => item.classList.remove('active'));
+                        closestItem.classList.add('active');
+                        container.scrollTo({
+                            top: closestItem.offsetTop - (container.clientHeight - closestItem.offsetHeight) / 2,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 150);
+            });
+        });
+
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        selectYear(yesterday.getFullYear());
+        selectMonth(yesterday.getMonth() + 1);
+        selectDay(yesterday.getDate());
+    </script>
+</body>
+</html>
